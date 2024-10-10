@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create CRM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://brunomoraes97.github.io/create_offer_links/assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle-checkbox">
+            <span class="slider"></span>
+        </label>
+        <span id="theme-label">Dark Mode</span>
+    </div>
+    <div class="container">
+        <!-- Progress Bar -->
+        <ul id="progressbar">
+            <li class="active">Login</li>
+            <li>Company</li>
+            <li>Application</li>
+            <li>User</li>
+        </ul>
+
+        <form id="multi-step-form">
+            <!-- Step 1: Login to Master -->
+            <fieldset class="form-step form-step-active">
+                <h2 class="form-title">Step 1: Login to Master CRM</h2>
+                <div class="form-group">
+                    <label for="login">Login Email:</label>
+                    <input type="email" id="login" name="login" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <!-- OTP Code Field (Initially Hidden) -->
+                <div class="form-group" id="otp_group" style="display: none;">
+                    <label for="otp">OTP Code:</label>
+                    <input type="text" id="otp" name="otp">
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn-next">Next</button>
+                </div>
+            </fieldset>
+            <!-- Step 2: Company Information -->
+            <fieldset class="form-step">
+                <h2 class="form-title">Step 2: Company Information</h2>
+                <div class="form-group">
+                    <label for="company_name">Company Name:</label>
+                    <input type="text" id="company_name" name="company_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="telegram">Telegram:</label>
+                    <input type="text" id="telegram" name="telegram">
+                </div>
+                <div class="form-group">
+                    <label for="skype">Skype:</label>
+                    <input type="text" id="skype" name="skype">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country (e.g., 'BR'):</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment_type">Payment Type:</label>
+                    <select id="payment_type" name="payment_type" required>
+                        <option value="">Select Payment Type</option>
+                        <option value="card">Card</option>
+                        <option value="manual">Manual</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn-prev">Previous</button>
+                    <button type="button" class="btn-next">Next</button>
+                </div>
+            </fieldset>
+
+            <!-- Step 3: Application Information -->
+            <fieldset class="form-step">
+                <h2 class="form-title">Step 3: Application Information</h2>
+                <div class="form-group">
+                    <label for="application_name">Application Name:</label>
+                    <input type="text" id="application_name" name="application_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="workspace">Workspace (before .irev.com):</label>
+                    <input type="text" id="workspace" name="workspace" required>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn-prev">Previous</button>
+                    <button type="button" class="btn-next">Next</button>
+                </div>
+            </fieldset>
+
+            <!-- Step 4: User Information -->
+            <fieldset class="form-step">
+                <h2 class="form-title">Step 4: User Information</h2>
+
+                <!-- User Information Container -->
+                <div id="user-container">
+                    <div class="user-entry">
+                        <h3>User 1</h3>
+                        <div class="form-group">
+                            <label for="first_name_1">First Name:</label>
+                            <input type="text" id="first_name_1" name="first_name[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name_1">Last Name:</label>
+                            <input type="text" id="last_name_1" name="last_name[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_login_1">Email Address:</label>
+                            <input type="email" id="user_login_1" name="user_login[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_password_1">Password:</label>
+                            <input type="password" id="user_password_1" name="user_password[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_1">Phone (include country code):</label>
+                            <input type="text" id="phone_1" name="phone[]">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="add-user-btn">Add Another User</button>
+                <div class="buttons">
+                    <button type="button" class="btn-prev">Previous</button>
+                    <button type="submit" class="btn-submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
