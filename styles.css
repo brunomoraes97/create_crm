@@ -1,0 +1,303 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables for Light and Dark Themes */
+:root {
+    --background-color: #f6f9fc;
+    --container-background: #ffffff;
+    --text-color: #333;
+    --input-background: #fff;
+    --input-text-color: #495057;
+    --border-color: #ced4da;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+    --button-text-color: #fff;
+    --progress-circle-bg: #e0e0e0;
+    --progress-circle-text: #ffffff;
+    --error-text-color: #dc3545;
+    --error-background: #f8d7da;
+    --error-border-color: #f5c6cb;
+}
+
+body.dark-mode {
+    --background-color: #121212;
+    --container-background: #1e1e1e;
+    --text-color: #e0e0e0;
+    --input-background: #2c2c2c;
+    --input-text-color: #e0e0e0;
+    --border-color: #444;
+    --button-background: #1a73e8;
+    --button-hover: #1669bb;
+    --button-text-color: #fff;
+    --progress-circle-bg: #444;
+    --progress-circle-text: #ffffff;
+    --error-text-color: #f5c6cb;
+    --error-background: #721c24;
+    --error-border-color: #f5c6cb;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle #theme-label {
+    margin-left: 10px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Switch Style */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--border-color);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--input-background);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--button-background);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Container Styling */
+.container {
+    max-width: 600px;
+    margin: 80px auto 50px auto;
+    background-color: var(--container-background);
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+/* Progress Bar */
+#progressbar {
+    display: flex;
+    padding: 0 0 30px 0;
+    margin-bottom: 30px;
+    counter-reset: step;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#progressbar li {
+    list-style-type: none;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+    color: #9e9e9e;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: var(--progress-circle-bg);
+    color: var(--progress-circle-text);
+    font-weight: bold;
+}
+
+#progressbar li.active {
+    color: var(--button-background);
+}
+
+#progressbar li.active:before {
+    background-color: var(--button-background);
+}
+
+/* Remove default fieldset border */
+fieldset {
+    border: none;
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+}
+
+.form-step-active {
+    display: block;
+}
+
+/* Titles */
+.form-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--input-text-color);
+    background-color: var(--input-background);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--button-background);
+    outline: none;
+}
+
+/* Buttons */
+.buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-next,
+.btn-prev,
+.btn-submit,
+#add-user-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 5px;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    transition: background-color 0.3s;
+}
+
+.btn-prev {
+    background-color: #6c757d;
+}
+
+.btn-next:hover,
+#add-user-btn:hover,
+.btn-submit:hover {
+    background-color: var(--button-hover);
+}
+
+.btn-prev:hover {
+    background-color: #5a6268;
+}
+
+/* User Entry Styling */
+.user-entry {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.user-entry h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+/* Result Message */
+#result {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#result p {
+    margin-bottom: 15px;
+}
+
+/* Success Message */
+#result p.success {
+    color: #28a745;
+}
+
+/* Error Message */
+#result p.error {
+    color: var(--error-text-color);
+    background-color: var(--error-background);
+    border: 1px solid var(--error-border-color);
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+
+    .user-entry h3 {
+        font-size: 18px;
+    }
+}
